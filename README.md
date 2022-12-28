@@ -2,6 +2,12 @@
 
 >  No presente trabalho foi realizado um estudo comparativo da capacidade preditiva entre algoritmos de Aprendizado de Máquina aplicados a um problema de regressão chamado Previsão de Séries Temporais. Especificamente, foram utilizados dados que compõem uma Série Temporal de Mercado Financeiro, a partir dos quais tenta-se prever o volume de negociação do mercado que é um dos indicadores mais importantes em problemas financeiros. Foram utilizados três métodos de Aprendizado de Máquina: os métodos de Regressão Linear e Redes Neurais Convencionais adaptados ao contexto de Séries Temporais e o método das Redes Neurais Recorrentes. Todas as implementações foram realizadas usando pacotes da linguagem Python específicos para Aprendizado de Máquina, Aprendizagem Profunda e Análise e Tratamento de Séries Temporais. Utilizando a métrica estatística R2 foi possível realizar uma análise comparativa entre os três algoritmos sob algumas condições de tratamento dos dados, como a normalização da série temporal.
 
+## MODELOS
+
+ - [Regressão Linear](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/LinnearRegression.ipynb)
+ - [Rede Neural Convencional](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/Sequencial.ipynb)
+ - [Rede Neural Recorrente](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/RNN.ipynb)
+
 # **Analise de predição de dados de volumes financeiro da bolsa de Nova York.**
 
 Dados obtidos são de mostra estatísticas históricas de negociação da Bolsa de Nova York Intercâmbio. São mostradas três séries temporais diárias cobrindo o período de 3 de dezembro de 1962 a 31 de dezembro de 1986:
