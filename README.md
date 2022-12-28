@@ -1,0 +1,151 @@
+# ESTUDO COMPARATIVO ENTRE ALGORITMOS DE MACHINE LEARNING APLICADOS À PREVISÃO DE SÉRIES TEMPORAIS DO MERCADO FINANCEIRO.
+
+>  No presente trabalho foi realizado um estudo comparativo da capacidade preditiva entre algoritmos de Aprendizado de Máquina aplicados a um problema de regressão chamado Previsão de Séries Temporais. Especificamente, foram utilizados dados que compõem uma Série Temporal de Mercado Financeiro, a partir dos quais tenta-se prever o volume de negociação do mercado que é um dos indicadores mais importantes em problemas financeiros. Foram utilizados três métodos de Aprendizado de Máquina: os métodos de Regressão Linear e Redes Neurais Convencionais adaptados ao contexto de Séries Temporais e o método das Redes Neurais Recorrentes. Todas as implementações foram realizadas usando pacotes da linguagem Python específicos para Aprendizado de Máquina, Aprendizagem Profunda e Análise e Tratamento de Séries Temporais. Utilizando a métrica estatística R2 foi possível realizar uma análise comparativa entre os três algoritmos sob algumas condições de tratamento dos dados, como a normalização da série temporal.
+
+# **Analise de predição de dados de volumes financeiro da bolsa de Nova York.**
+
+Dados obtidos de mostra estatísticas históricas de negociação da Bolsa de Nova York Intercâmbio. São mostradas três séries temporais diárias cobrindo o período de 3 de dezembro de 1962 a 31 de dezembro de 1986:
+
+# Dados do DataSet
+
+> O dataframe possui uma coluna chamada **_train_**, nessa coluna possui os dados **true** ou **false**, sendo true os dados para treinamento e false os dados para teste.
+
+>  Possui dados de entrada referenciando os dias da semana, no caso a coluna tem o nome de **_day_of_week_**
+
+> Possui também três sequências de dados temporaís, no qual a coluna **_Dj_return_** é o valor do retorno dos ativos, **_log_volatility_** é a volatilidade e **_log_volume_** é o volume e também é a variável que será utilizada para ser predita, consequentemente fazendo esse trabalho se uma autoRegressão
+
+> Os dados de predição (target) foi separado com a lógica de tempo de atraso, ou seja, os itens terão uma quantidade de dados de entrada, essa quantidade será determinada com a variável L_lag(atraso).
+
+## Exemplo:
+
+L_lag = 5, será 5 dias de dados de entrada
+
+<table width="90%" height="70"border="1px" >
+    <tr border="1">
+    <th width="80" style="text-align:center;">Vt-5</th>
+    <th width="80" style="text-align:center;">Vt-4</th>
+    <th width="80" style="text-align:center;">Vt-3</th>
+    <th width="80" style="text-align:center;">Vt-2</th>
+    <th width="80" style="text-align:center;">Vt-1</th>
+    <th width="80" style="text-align:center;">Vt</th>
+    </tr>
+</table>
+
+<br>
+
+# Foi efetudo três métodos para utilização de variáveis categóricas, no caso, a variável é um dia da semana
+
+# **_Explicação de cada método:_**
+> * ### ***dia_sequencia.***
+>  A lógica é apenas mudar o nome (string) do dia da semana para um valor, no caso, 1 para mon(segunda), 2 para tues(terça) ..., 5 para fri(sexta)
+
+ ## Exemplo:
+<table width="40px" border="1px">
+ <tr border="1" height="60">
+            <th width="80" style="text-align:center;">Dias Da Semana</th>
+</tr>
+<tr border="1" height="40">
+    <td width="80" style="text-align:center;">1</td>
+    </tr>
+<tr border="1" height="40">
+    <td width="80" style="text-align:center;">2</td>
+</tr>
+<tr border="1" height="40">
+    <td width="80" style="text-align:center;">3</td>
+</tr>
+<tr border="1" height="40">
+    <td width="80" style="text-align:center;">4</td>
+</tr>
+<tr border="1" height="40">
+    <td width="80" style="text-align:center;">5</td>
+</tr>
+</table>
+
+ > * ### ***dia_seno_cosseno***
+ > Foram criado duas colunas e eliminado a coluna da string do dia da semana, as colunas criadas são: seno e cosseno, como são 5 dias da semana, pegamos o angulo total do circulo (360º) e dividimos por 5 (5  dias da semana), resultando 72º, ou seja, será 72 graus para cada dia da semana,assim sendo, mutiplicamos o valor do dia por 72 e depois aplicamos a formula de seno e cosseno
+ 
+ ## Exemplo:
+
+<table width="90%" border="1px" >
+    <tr border="1" height="60">
+    <th width="80" style="text-align:center;">DIA</th>
+    <th width="80" style="text-align:center;">SENO</th>
+    <th width="80" style="text-align:center;">COSSENO</th>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">Segunda</td>
+    <td width="80" style="text-align:center;">seno(1*72)</td>
+    <td width="80" style="text-align:center;">cosseno(1*72)</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">Terça</td>
+    <td width="80" style="text-align:center;">seno(2*72º)</td>
+    <td width="80" style="text-align:center;">cosseno(2*72º)</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">Quarta</td>
+    <td width="80" style="text-align:center;">seno(3*72º)</td>
+    <td width="80" style="text-align:center;">cosseno(3*72º)</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">Quinta</td>
+    <td width="80" style="text-align:center;">seno(4*72º)</td>
+    <td width="80" style="text-align:center;">cosseno(4*72º)</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">Sexta</td>
+    <td width="80" style="text-align:center;">seno(5*72º)</td>
+    <td width="80" style="text-align:center;">cosseno(5*72º)</td>
+    </tr>
+</table>
+  
+>  ### ***dia_get_dummies***
+> Processo de codificação one-hot, para criar colunas de cada dia da semana e acescentando 
+valor de 1 para a coluna do respectivo dia e zero para as demais.
+
+ ## Exemplo:
+
+<table width="90%" border="1px" >
+    <tr border="1" height="60">
+    <th width="80" style="text-align:center;">SEGUNDA</th>
+    <th width="80" style="text-align:center;">TERÇA</th>
+    <th width="80" style="text-align:center;">QUARTA</th>
+    <th width="80" style="text-align:center;">QUINTA</th>
+    <th width="80" style="text-align:center;">SEXTA</th>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">1</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">1</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">1</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    </tr>
+    <tr border="1" height="40">
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">1</td>
+    <td width="80" style="text-align:center;">0</td>
+    </tr>
+    <tr border="1"height="40">
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">0</td>
+    <td width="80" style="text-align:center;">1</td>
+    </tr>
+</table>
