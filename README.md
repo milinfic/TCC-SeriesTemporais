@@ -2,6 +2,9 @@
 
 >  No presente trabalho foi realizado um estudo comparativo da capacidade preditiva entre algoritmos de Aprendizado de Máquina aplicados a um problema de regressão chamado Previsão de Séries Temporais. Especificamente, foram utilizados dados que compõem uma Série Temporal de Mercado Financeiro, a partir dos quais tenta-se prever o volume de negociação do mercado que é um dos indicadores mais importantes em problemas financeiros. Foram utilizados três métodos de Aprendizado de Máquina: os métodos de Regressão Linear e Redes Neurais Convencionais adaptados ao contexto de Séries Temporais e o método das Redes Neurais Recorrentes. Todas as implementações foram realizadas usando pacotes da linguagem Python específicos para Aprendizado de Máquina, Aprendizagem Profunda e Análise e Tratamento de Séries Temporais. Utilizando a métrica estatística R2 foi possível realizar uma análise comparativa entre os três algoritmos sob algumas condições de tratamento dos dados, como a normalização da série temporal.
 
+- [Artigo-PDF](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/TCC%20Paulo.pdf)
+- [Slides Apresentação do Projeto](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fmilinfic%2FTCC-SeriesTemporais%2Fmain%2FModelo_Apresentacao_Monografia.pptx&wdOrigin=BROWSELINK)
+
 ## MODELOS
 
  - [Regressão Linear](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/LinnearRegression.ipynb)
@@ -176,6 +179,7 @@ valor de 1 para a coluna do respectivo dia e zero para as demais.
 <p align="center">
   <img alt="Tela-Login" title="#Scores" src="./Imagens/Screenshot 2022-12-28 at 14-16-20 TratamentoIniciaisDeDadosLinearRegression - Jupyter Notebook.png">
 </p>
+ - [Regressão Linear](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/LinnearRegression.ipynb)
 <br>
 
 >  ### ***Tabela de Resultados***
