@@ -179,7 +179,6 @@ valor de 1 para a coluna do respectivo dia e zero para as demais.
 <p align="center">
   <img alt="Tela-Login" title="#Scores" src="./Imagens/Screenshot 2022-12-28 at 14-16-20 TratamentoIniciaisDeDadosLinearRegression - Jupyter Notebook.png">
 </p>
- - [Regressão Linear](https://github.com/milinfic/TCC-SeriesTemporais/blob/main/LinnearRegression.ipynb)
 <br>
 
 >  ### ***Tabela de Resultados***
