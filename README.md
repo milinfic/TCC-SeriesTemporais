@@ -4,7 +4,7 @@
 
 # **Analise de predição de dados de volumes financeiro da bolsa de Nova York.**
 
-Dados obtidos de mostra estatísticas históricas de negociação da Bolsa de Nova York Intercâmbio. São mostradas três séries temporais diárias cobrindo o período de 3 de dezembro de 1962 a 31 de dezembro de 1986:
+Dados obtidos são de mostra estatísticas históricas de negociação da Bolsa de Nova York Intercâmbio. São mostradas três séries temporais diárias cobrindo o período de 3 de dezembro de 1962 a 31 de dezembro de 1986:
 
 # Dados do DataSet
 
@@ -13,6 +13,10 @@ Dados obtidos de mostra estatísticas históricas de negociação da Bolsa de No
 >  Possui dados de entrada referenciando os dias da semana, no caso a coluna tem o nome de **_day_of_week_**
 
 > Possui também três sequências de dados temporaís, no qual a coluna **_Dj_return_** é o valor do retorno dos ativos, **_log_volatility_** é a volatilidade e **_log_volume_** é o volume e também é a variável que será utilizada para ser predita, consequentemente fazendo esse trabalho se uma autoRegressão
+
+<p align="center">
+  <img alt="DataSet" title="#DataSet" src="./Imagens/Screenshot 2022-12-28 at 14-09-22 TCC Paulo.pdf.png">
+</p>
 
 > Os dados de predição (target) foi separado com a lógica de tempo de atraso, ou seja, os itens terão uma quantidade de dados de entrada, essa quantidade será determinada com a variável L_lag(atraso).
 
@@ -149,3 +153,32 @@ valor de 1 para a coluna do respectivo dia e zero para as demais.
     <td width="80" style="text-align:center;">1</td>
     </tr>
 </table>
+
+>  ### ***Normalização/Padronização dos dados***
+> Esse processo reposiciona os dados com a média no valor de 0.
+
+ ## Exemplo:
+
+<p align="center">
+  <img alt="Normalizacao" title="#Normalizacao" src="./Imagens/Screenshot 2022-12-28 at 14-08-19 TCC Paulo.pdf.png">
+</p>
+<br>
+
+>  ### ***Quantidade de dados de entrada***
+> Foi efetaudo teste para ver a melhor quantidade de dados para ser utilizado, conforme pode ver no gráfico abaixo, cinco dados de entrada é suficiente para fazer uma boa predição.
+ ## Exemplo:
+<p align="center">
+  <img alt="Tela-Login" title="#Scores" src="./Imagens/Screenshot 2022-12-28 at 14-16-20 TratamentoIniciaisDeDadosLinearRegression - Jupyter Notebook.png">
+</p>
+<br>
+
+>  ### ***Tabela de Resultados***
+> Dados retirados dos testes de melhor predição, esses valores foram pego no colab, utilizei a plataforma para fazer predição com quantidade maior de época do que esta atribuída nesse trabalho compartilhado, porém, vocês podem copiar e subir no colab, redirecionando os dados de entrada do df para o caminho que corresponde ao local que vocês estiverem utilizando.
+<p align="center">
+  <img alt="Tela-Login" title="#TabelaResultado" src="./Imagens/Screenshot 2022-12-28 at 14-07-44 TCC Paulo.pdf.png">
+</p>
+
+# Resultado
+* O trabalho mostrou que não precisamos ter todos os dados para melhor predição, no caso, a estratégia e utilizar a quantidade melhor para predição, nesse trabalho apenas 5 dias ja nos permite ter uma boa predição de valores.
+* Tratamento de dados é importante para predição, no caso do trabalho, ao tratar os dados categoricos, que no caso foi os dias da semana, conseguimos melhorar a predição
+* Uma simples regressão linear do sktlear teve melhor, ou igual, predição do que as outras utilizadas, consequêntemente nos mostrando ser mais importante o tratamento dos dados para essa predição.
